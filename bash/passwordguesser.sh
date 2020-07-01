@@ -11,6 +11,7 @@
 
 #flag to check if user has guessed password
 flag=0
+# assign the password
 referenceString="password"
 # asking user
 echo "Five tries to guess password "
@@ -25,7 +26,7 @@ then
 # update flag to 1 to stop othe if conitions
 flag=1
 echo "Your guess is Correct!"
-else 
+else
 echo "You guess is Incorrect."
 fi
 
@@ -38,14 +39,14 @@ echo "Second Try:"
 echo "Guess"
 #rewriting myString variable
 read myString
-	
+
 if [ $myString = $referenceString ];
-then    
+then
 flag=1
 echo "Your guess is Correct!"
-else 
+else
 echo "You guess is Incorrect."
-fi      
+fi
 fi
 
 # check for flag if password is guessed in previous try
@@ -98,5 +99,3 @@ else
 echo "You guess is Incorrect."
 fi
 fi
-
-

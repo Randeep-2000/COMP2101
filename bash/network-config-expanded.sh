@@ -31,10 +31,12 @@ my_hostname=$(hostname)
 # the default route can be found in the route table normally
 # the router name is obtained with getent
 default_router_address=$(ip r s default| cut -d ' ' -f 3)
+#its router name with getent
 default_router_name=$(getent hosts $default_router_address|awk '{print $2}')
 
 # finding external information relies on curl being installed and relies on live internet connection
 external_address=$(curl -s icanhazip.com)
+#it is for find command extenal name
 external_name=$(getent hosts $external_address | awk '{print $2}')
 
 
@@ -70,13 +72,15 @@ do
 # Find an address and hostname for the interface being summarized
 # we are assuming there is only one IPV4 address assigned to this interface
 ipv4_address=$(ip a s $interface|awk -F '[/ ]+' '/inet /{print $3}')
+#we r assumming ipv4_hostname
 ipv4_hostname=$(getent hosts $ipv4_address | awk '{print $2}')
 
 # Identify the network number for this interface and its name if it has one
 network_address=$(ip route list dev $interface scope link|cut -d ' ' -f 1)
 network_number=$(cut -d / -f 1 <<<"$network_address")
+#it is for network_name
 network_name=$(getent networks $network_number|awk '{print $1}')
-
+#print the code
 cat <<EOF
 Interface $interface:
 ===============

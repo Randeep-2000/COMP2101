@@ -34,14 +34,16 @@ case "$1" in -h)
 	;;
 -d)
 	 if [ -z "$2" ];
-	 then 
+	 then
 		 echo "Cannot use debug without a level please provide single digit number as level for debug"
         elif [ -n "$2" ] && [ $2 -ge 0 ] && [ $2 -le 9 ];
 	then
+    #use to set debug mode
 		echo "Debug Mode is set to on with level $2"
 	dmode="on"
 	level=$2
 else
+  #use the coomand coanot debug without single digit number
 	echo "Cannot use debug without a level please provide single digit number as level for debug"
 	 fi
 	 ;;
